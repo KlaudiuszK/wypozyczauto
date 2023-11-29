@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>WypożyczAuto - Panel Administratora</title>
+</head>
+<body>
+    <div id="container">
+        <div class="sidebar">
+            <div id="navlogo">PANEL ADMINA</div>
+            <div class="navlink">
+                <a href="#" onclick="changeContent('samochodycontainer')">Samochody</a>
+            </div>
+            <div class="navlink">
+                <a href="#" onclick="changeContent('wypozyczeniacontainer')">Wypożyczenia</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="startcontainer" class="page">
+                <h1>Witamy w Panelu Administratora!</h1>
+                <p>Użyj panelu bocznego do nawigacji</p>
+            </div>
+            <div id="samochodycontainer" class="page">
+                <form id="carForm">
+                    <label for="brand">Marka:</label>
+                    <input type="text" id="brand" name="brand" required>
+                
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model" required>
+                
+                    <button type="button" onclick="sendData()">Dodaj Samochód</button>
+                </form>
+
+                <div id="carList"></div>
+            </div>
+            <div id="wypozyczeniacontainer" class="page">
+                Panel wypożyczeń w budowie...
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client"></script>
+    <script>
+        function changeContent(page) {
+          // Ukryj wszystkie strony
+          var pages = document.getElementsByClassName('page');
+          for (var i = 0; i < pages.length; i++) {
+            pages[i].style.display = 'none';
+          }
+      
+          // Wyświetl wybraną stronę
+          document.getElementById(page).style.display = 'block';
+        }
+    </script>
+
+    <script>
+        const socket = new SockJS('/websocket-example');
+        const stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function (frame) {
+            stompClient.subscribe('/topic/cars', function (message) {
+                displayCars(JSON.parse(message.body));
+            });
+            getData();
+        });
+
+        function getData() {
+            stompClient.send('/app/getCars', {}, {});
+        }
+
+        function sendData() {
+            const brand = document.getElementById('brand').value;
+            const model = document.getElementById('model').value;
+
+            const car = { brand, model };
+
+            stompClient.send('/app/addCar', {}, JSON.stringify(car));
+        }
+        
+        function displayCars(cars) {
+            const carList = document.getElementById('carList');
+            carList.innerHTML = '<div class="divid header">ID</div><div class="divbrand header">Marka</div><div class="divmodel header">Model</div><div class="divclear"></div>';
+
+            cars.forEach(function (car) {
+                const divid = document.createElement('div');
+                divid.className = 'divid';
+                divid.textContent = `${car.id}`;
+                carList.appendChild(divid);
+
+                const divbrand = document.createElement('div');
+                divbrand.className = 'divbrand';
+                divbrand.textContent = `${car.brand}`;
+                carList.appendChild(divbrand);
+
+                const divmodel = document.createElement('div');
+                divmodel.className = 'divmodel';
+                divmodel.textContent = `${car.model}`;
+                carList.appendChild(divmodel);
+
+                const divclear = document.createElement('div');
+                divclear.className = 'divclear';
+                carList.appendChild(divclear);
+            });
+        }
+    </script>
+</body>
+</html>

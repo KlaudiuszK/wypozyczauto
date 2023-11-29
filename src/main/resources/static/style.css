@@ -1,0 +1,166 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+#container
+{
+    width: 100%;
+    height: 100%;;
+}
+
+#startcontainer
+{
+    display: block;
+}
+
+#samochodycontainer
+{
+    display: none;
+}
+
+#samochodycontainer label
+{
+    padding: 10px;
+    font-size: 16px;
+    color: #ff6000;
+    background-color: #FFE6C7;
+    border: 2px solid #FFE6C7;
+    border-radius: 5px;
+}
+
+#samochodycontainer input
+{
+    width: 250px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #FFA559;
+    border-radius: 5px;
+}
+
+#samochodycontainer button
+{
+    padding: 10px;
+    font-size: 16px;
+    color: #FFE6C7;
+    background-color: #ff6000;
+    border-radius: 5px;
+    border: 2px solid #FFA559;
+    transition: 0.5s;
+}
+
+#carList
+{
+    width: 60%;
+    padding-top: 30px;
+}
+
+.header
+{
+    color: #ff6000;
+    background-color: #333;
+    text-align: center;
+    padding-left: 2.5px!important;
+    padding-right: 2.5px;
+}
+
+.divid
+{
+    float: left;
+    min-height: 24px;
+    width: calc(10% - 7px);
+    border: 1px solid black;
+    padding-top: 6px;
+    padding-left: 5px;
+}
+
+.divbrand
+{
+    float: left;
+    min-height: 24px;
+    width: calc(45% - 7px);
+    border: 1px solid black;
+    padding-top: 6px;
+    padding-left: 5px;
+}
+
+.divmodel
+{
+    float: left;
+    min-height: 24px;
+    width: calc(45% - 7px);
+    border: 1px solid black;
+    padding-top: 6px;
+    padding-left: 5px;
+}
+
+.divclear
+{
+    clear: both;
+}
+
+#samochodycontainer button:hover
+{
+    background-color: #FFE6C7;
+    color: #ff6000;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#wypozyczeniacontainer
+{
+    display: none;
+}
+
+.sidebar {
+    min-width: 250px;
+    height: calc(100% - 20px);
+    background-color: #333;
+    color: #fff;
+    align-items: center;
+    padding-top: 20px;
+    float: left;
+}
+
+#navlogo
+{
+    text-align: center;
+    min-width: 230px;
+    padding: 10px;
+    padding-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff6000;
+}
+
+.navlink
+{
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    min-width: 230px;
+    text-align: center;
+    border-top: 2px black dotted;
+    border-bottom: 2px black dotted;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar a:hover
+{
+    color: #FFA559;
+    transition: 0.5s;
+}
+
+#content {
+    padding: 20px;
+    float: left;
+    width: calc(100% - 290px);
+    height: calc(100% - 40px);
+}

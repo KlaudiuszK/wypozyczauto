@@ -1,0 +1,10 @@
+Zapisywanie bazy uruchomionej w dockerze do pliku backup.sql (plik zapisze się w folderze w którym wykonywane jest polecenie):
+
+docker exec <nazwa_kontenera> /usr/bin/mysqldump -u springbootuser --password=springbootpassword --no-tablespaces springbootdb > backup.sql
+
+
+
+
+Importowanie bazy z pliku backup.sql (polecenie musi być wykonane w pliku w którym znajduje się plik backup.sql):
+
+docker exec -i <nazwa_kontenera> mysql -u springbootuser --password=springbootpassword springbootdb < backup.sql
