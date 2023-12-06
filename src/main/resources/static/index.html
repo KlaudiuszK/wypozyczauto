@@ -93,12 +93,10 @@
             const carList = document.getElementById('carList');
             carList.innerHTML = '<div class="divid header">ID</div><div class="divbrand header">Marka</div><div class="divmodel header">Model</div><div class="divclear"></div>';
 
-            while (carList.firstChild) {
-                carList.removeChild(carList.firstChild);
-            }
 
 
             cars.forEach(function (car) {
+                
                 const divid = document.createElement('div');
                 divid.className = 'divid';
                 divid.textContent = `${car.id}`;
