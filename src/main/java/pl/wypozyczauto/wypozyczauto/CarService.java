@@ -18,4 +18,10 @@ public class CarService {
     public Car addCar(Car car) {
         return carRepository.save(car);
     }
+
+    public void removeCar(Long carId) {
+        // Logika usuwania samochodu na podstawie ID
+        carRepository.deleteById(carId);
+    }
+
 }

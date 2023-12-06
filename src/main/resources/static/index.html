@@ -81,10 +81,22 @@
 
             stompClient.send('/app/addCar', {}, JSON.stringify(car));
         }
-        
+
+
+      function removeCar(carId) {
+            stompClient.send("/app/removeCar", {}, JSON.stringify(  carId ));
+      }
+
+
+
         function displayCars(cars) {
             const carList = document.getElementById('carList');
             carList.innerHTML = '<div class="divid header">ID</div><div class="divbrand header">Marka</div><div class="divmodel header">Model</div><div class="divclear"></div>';
+
+            while (carList.firstChild) {
+                carList.removeChild(carList.firstChild);
+            }
+
 
             cars.forEach(function (car) {
                 const divid = document.createElement('div');
@@ -102,9 +114,24 @@
                 divmodel.textContent = `${car.model}`;
                 carList.appendChild(divmodel);
 
+                const removeButton = document.createElement('button');
+                removeButton.className = 'removeButton'
+                removeButton.textContent = 'X';
+                removeButton.setAttribute('data-carid', car.id);
+                removeButton.addEventListener('click', function () {
+                    removeCar(car.id);
+                    console.log("usunieto samochod");
+                });
+                carList.appendChild(removeButton);
+
+
+
                 const divclear = document.createElement('div');
                 divclear.className = 'divclear';
                 carList.appendChild(divclear);
+
+
+
             });
         }
     </script>

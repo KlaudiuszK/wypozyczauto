@@ -27,9 +27,18 @@ public class WypozyczautoController {
         return carService.getAllCars();
     }
 
+    @MessageMapping("/removeCar")
+    @SendTo("/topic/cars")
+    public List<Car> removeCar(Long carId){
+        carService.removeCar(carId);
+        return carService.getAllCars();
+    }
+
     @MessageMapping("/getCars")
     @SendTo("/topic/cars")
     public List<Car> getAllCars() {
         return carService.getAllCars();
     }
+
+
 }
