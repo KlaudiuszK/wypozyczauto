@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona Główna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+<body>
+<header>
+    <span class="title"> Wypożyczalnia Samochodów</span>
+    <a href="home.html"  class="home"> Strona Główna</a>
+</header>
+<div id="container">
+    <div id="content" class="page">
+    </div>
+    <div id="reservationcontainer" class="page">
+
+    </div>
+</div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client"></script>
+
+    <script>
+        function changeContent(page) {
+            // Ukryj wszystkie strony
+            var pages = document.getElementsByClassName('page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+
+            // Wyświetl wybraną stronę
+            document.getElementById(page).style.display = 'block';
+        }
+    </script>
+
+    <script>
+
+        const socket = new SockJS('/websocket-example');
+        const stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function (frame) {
+            stompClient.subscribe('/topic/cars', function (message) {
+                handleCars(JSON.parse(message.body));
+            });
+            getData();
+        });
+
+        function getData() {
+            stompClient.send('/app/getCars', {}, {});
+        }
+
+        function handleCars(cars) {
+            // Znajdujemy kontener o klasie 'content' i czyścimy go
+            var container = $('#content');
+            container.empty();
+
+            // Iterujemy po każdym samochodzie w tablicy 'cars'
+            for (var i = 0; i < cars.length; i++) {
+                var car = cars[i];
+
+                // Tworzymy nowy div o klasie 'item' dla każdego samochodu
+                var carDiv = $('<div class="item"></div>');
+
+                // Tutaj można dodać kod HTML do wyświetlenia informacji o samochodzie w divie.item
+                carDiv.append('<p class="itemName">' + car.brand + " "  + car.model +'</p>');
+
+                carDiv.append('<img src="' + car.photo + '" alt="' + car.model + '">');
+
+                carDiv.append('<span class="price">Cena: <b>' + car.price + '</b> PLN / Dzień </span> ');
+                carDiv.append('<a href="#" onclick="changeContent(\'wypozyczeniacontainer\')" class="rezerwuj"> Rezerwuj </a>');
+
+                // Dodajemy div do kontenera
+                container.append(carDiv);
+            }
+        }
+
+
+    </script>
+
+
+</body>
+</html>

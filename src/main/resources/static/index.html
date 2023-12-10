@@ -16,6 +16,9 @@
             <div class="navlink">
                 <a href="#" onclick="changeContent('wypozyczeniacontainer')">Wypożyczenia</a>
             </div>
+            <div class="navlink">
+                <a href="home.html">Strona glowna</a>
+            </div>
         </div>
 
         <div id="content">
@@ -30,14 +33,20 @@
                 
                     <label for="model">Model:</label>
                     <input type="text" id="model" name="model" required>
-                
+
+                    <label for="price">Cena:</label>
+                    <input type="text" id="price" name="price" required>
+
+                    <label for="photo">Zdjęcie</label>
+                    <input type="url" id="photo" name="photo">
+
                     <button type="button" onclick="sendData()">Dodaj Samochód</button>
                 </form>
 
                 <div id="carList"></div>
             </div>
             <div id="wypozyczeniacontainer" class="page">
-                Panel wypożyczeń w budowie...
+                Panel wypożyczeń w budoweie
             </div>
         </div>
     </div>
@@ -45,18 +54,20 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client"></script>
+
     <script>
         function changeContent(page) {
-          // Ukryj wszystkie strony
-          var pages = document.getElementsByClassName('page');
-          for (var i = 0; i < pages.length; i++) {
-            pages[i].style.display = 'none';
-          }
-      
-          // Wyświetl wybraną stronę
-          document.getElementById(page).style.display = 'block';
+            // Ukryj wszystkie strony
+            var pages = document.getElementsByClassName('page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+
+            // Wyświetl wybraną stronę
+            document.getElementById(page).style.display = 'block';
         }
     </script>
+
 
     <script>
         const socket = new SockJS('/websocket-example');
@@ -76,8 +87,10 @@
         function sendData() {
             const brand = document.getElementById('brand').value;
             const model = document.getElementById('model').value;
+            const price = document.getElementById('price').value;
+            const photo = document.getElementById('photo').value;
 
-            const car = { brand, model };
+            const car = { brand, model, price, photo };
 
             stompClient.send('/app/addCar', {}, JSON.stringify(car));
         }
@@ -91,12 +104,12 @@
 
         function displayCars(cars) {
             const carList = document.getElementById('carList');
-            carList.innerHTML = '<div class="divid header">ID</div><div class="divbrand header">Marka</div><div class="divmodel header">Model</div><div class="divclear"></div>';
+            carList.innerHTML = '<div class="divid header">ID</div><div class="divbrand header">Marka</div><div class="divmodel header">Model</div> <div class="divprice header">Cena/Doba</div><div class="divphoto header">Zdjęcie</div><div class="divclear"></div>';
 
 
 
             cars.forEach(function (car) {
-                
+
                 const divid = document.createElement('div');
                 divid.className = 'divid';
                 divid.textContent = `${car.id}`;
@@ -112,6 +125,22 @@
                 divmodel.textContent = `${car.model}`;
                 carList.appendChild(divmodel);
 
+
+
+                const divprice = document.createElement('div');
+                divprice.className = 'divprice';
+                divprice.textContent = `${car.price}`;
+                carList.appendChild(divprice);
+
+                const divphoto = document.createElement('div');
+                divphoto.className = 'divphoto';
+                divphoto.textContent = `${car.photo}`;
+                carList.appendChild(divphoto);
+
+                const divclear = document.createElement('div');
+                divclear.className = 'divclear';
+                carList.appendChild(divclear);
+
                 const removeButton = document.createElement('button');
                 removeButton.className = 'removeButton'
                 removeButton.textContent = 'X';
@@ -122,12 +151,7 @@
                 });
                 carList.appendChild(removeButton);
 
-
-
-                const divclear = document.createElement('div');
-                divclear.className = 'divclear';
                 carList.appendChild(divclear);
-
 
 
             });
