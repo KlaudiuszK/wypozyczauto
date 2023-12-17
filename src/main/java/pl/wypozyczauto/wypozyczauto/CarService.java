@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -23,5 +24,31 @@ public class CarService {
         carRepository.deleteById(carId);
     }
 
+    public void editCar(Car updatedCar) {
+        Optional<Car> optionalCar = carRepository.findById(updatedCar.getId());
+        System.out.println("optionalcar" +optionalCar);
+        if (optionalCar.isPresent()) {
+            Car existingCar = optionalCar.get();
+            // Sprawdź, czy przesłano nową wartość i aktualizuj odpowiednie pole
+            if (updatedCar.getBrand() != null) {
+                existingCar.setBrand(updatedCar.getBrand());
+            }
+
+            if (updatedCar.getModel() != null) {
+                existingCar.setModel(updatedCar.getModel());
+            }
+
+            if (updatedCar.getPrice() != null) {
+                existingCar.setPrice(updatedCar.getPrice());
+            }
+
+            if (updatedCar.getPhoto() != null) {
+                existingCar.setPhoto(updatedCar.getPhoto());
+            }
+
+            carRepository.save(existingCar);
+        }
+
+    }
 
 }

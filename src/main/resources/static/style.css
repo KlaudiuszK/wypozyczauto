@@ -34,7 +34,7 @@ body, html {
 
 #samochodycontainer input
 {
-    width: 250px;
+    width: calc(15% - 10px);
     padding: 10px;
     font-size: 16px;
     border: 2px solid #FFA559;
@@ -197,3 +197,18 @@ body, html {
     height: calc(100% - 40px);
 }
 
+
+.editable {
+    cursor: pointer;
+    border-bottom: 1px dashed #000;
+}
+
+.editable:hover {
+    background-color: #f0f0f0;
+}
+
+.editable input {
+    display: none;
+    border: none;
+    outline: none;
+}

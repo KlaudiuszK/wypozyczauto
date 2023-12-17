@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -23,6 +24,7 @@ public class WypozyczautoController {
     @MessageMapping("/addCar")
     @SendTo("/topic/cars")
     public List<Car> addCar(Car car) {
+        System.out.println("dodany samochod "+ car);
         carService.addCar(car);
         return carService.getAllCars();
     }
@@ -38,6 +40,23 @@ public class WypozyczautoController {
     @SendTo("/topic/cars")
     public List<Car> getAllCars() {
         return carService.getAllCars();
+    }
+
+
+    @MessageMapping("/editCar")
+    @SendTo("/topic/cars")
+    public List<Car> editCar(Car updateCar) {
+        try {
+            System.out.println("Received editCar message: " + updateCar);
+
+            carService.editCar(updateCar);
+            return carService.getAllCars();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return Collections.emptyList();
+
+        }
     }
 
 

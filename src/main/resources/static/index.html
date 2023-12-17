@@ -80,6 +80,7 @@
             getData();
         });
 
+
         function getData() {
             stompClient.send('/app/getCars', {}, {});
         }
@@ -90,23 +91,99 @@
             const price = document.getElementById('price').value;
             const photo = document.getElementById('photo').value;
 
-            const car = { brand, model, price, photo };
 
+            const car = { brand, model, price, photo };
             stompClient.send('/app/addCar', {}, JSON.stringify(car));
         }
 
 
-      function removeCar(carId) {
+        function removeCar(carId) {
             stompClient.send("/app/removeCar", {}, JSON.stringify(  carId ));
-      }
+        }
+
+        function editCar(Cars){
+            stompClient.send("/app/editCar", {}, JSON.stringify(Cars) );
+        }
+
+
+        // Funkcja do aktywowania edycji
+        function enableEditing(carList) {
+            // Ukryj tekst
+            console.log('Funkcja enableEditing została wywołana.');
+            const displayText = carList.querySelector('.displayText');
+            const editInput = carList.querySelector('.editInput');
+
+            displayText.style.display = 'none';
+            editInput.style.display = 'inline-block';
+            // Ustaw tekst pola edycji na aktualny tekst
+
+            editInput.value = displayText.textContent;
+            console.log(editInput.value);
+
+
+            // Ustaw focus na polu edycji
+            editInput.focus();
+
+        }
+
+        function disableEditing(carList, carId) {
+            console.log('Funkcja disableEditing została wywołana.');
+            // Pobierz tekst i pole do edycji
+            const displayText = carList.querySelector('.displayText');
+            const editInput = carList.querySelector('.editInput');
+
+            // Zaktualizuj tekst na podstawie wartości z pola edycji
+            const poprzednie = displayText.textContent;
+            displayText.textContent = editInput.value;
+
+            // Pokaż tekst, ukryj pole do edycji
+            displayText.style.display = 'inline-block';
+            editInput.style.display = 'none';
+            console.log("ODebrane id " + carId);
+
+            const id = carId;
+
+            console.log("sax   " +displayText.classList);
+          //  const modelS = displayText.classList;
+            //const brandS = displayText.classList;
+            console.log("Poprzednie: "+ poprzednie +" DSIPLAY: " + displayText.textContent + "divmodel " + displayText.classList);
+
+            if(poprzednie !== displayText.textContent) {
+
+                if(displayText.classList.contains('modelS'))
+                {
+                    const model = editInput.value;
+                    const cars = {id, model}
+                    editCar(cars);
+                }
+                else if(displayText.classList.contains('brandS')){
+                    const brand = editInput.value;
+                    const cars = { id, brand }
+                    editCar(cars);
+                }
+                else if(displayText.classList.contains('priceS')){
+                    const price = editInput.value;
+                    const cars = { id, price }
+                    editCar(cars);
+                }
+                else if(displayText.classList.contains('photoS')){
+                    const photo = editInput.value;
+                    const cars = {id, photo}
+                    editCar(cars);
+                }
+            }
+
+
+
+
+        }
+
 
 
 
         function displayCars(cars) {
             const carList = document.getElementById('carList');
             carList.innerHTML = '<div class="divid header">ID</div><div class="divbrand header">Marka</div><div class="divmodel header">Model</div> <div class="divprice header">Cena/Doba</div><div class="divphoto header">Zdjęcie</div><div class="divclear"></div>';
-
-
 
             cars.forEach(function (car) {
 
@@ -115,32 +192,103 @@
                 divid.textContent = `${car.id}`;
                 carList.appendChild(divid);
 
+
+            //Tworzenie kontenerów przechowujących marki
                 const divbrand = document.createElement('div');
-                divbrand.className = 'divbrand';
-                divbrand.textContent = `${car.brand}`;
+                divbrand.classList.add('divbrand', 'editable');
+                divbrand.onclick = function() {
+                    enableEditing(this);
+                };
+
+                const spanBrand = document.createElement('span');
+                spanBrand.classList.add('displayText', 'brandS');
+                spanBrand.textContent =`${car.brand}`;
+                divbrand.appendChild(spanBrand);
+
+                const inputBrand = document.createElement('input');
+                inputBrand.className = 'editInput';
+                inputBrand.type = 'text';
+                inputBrand.onblur = function() {
+                    console.log('Przekazywany car.id:', car.id);
+                    disableEditing(this.parentNode, car.id);
+                };
+                divbrand.appendChild(inputBrand);
                 carList.appendChild(divbrand);
 
+
+            //Tworzenie kontenerów przechowujacych modele
                 const divmodel = document.createElement('div');
-                divmodel.className = 'divmodel';
-                divmodel.textContent = `${car.model}`;
+                divmodel.classList.add( 'divmodel', 'editable');
+                divmodel.onclick = function(){
+                    enableEditing(this);
+                };
+
+                const spanModel = document.createElement('span');
+                spanModel.classList.add('displayText', 'modelS');
+                spanModel.textContent =`${car.model}`;
+                divmodel.appendChild(spanModel);
+
+                const inputModel = document.createElement('input');
+                inputModel.className = 'editInput';
+                inputModel.type = 'text';
+                inputModel.onblur = function (){
+                    disableEditing(this.parentNode, car.id);
+                };
+                divmodel.appendChild(inputModel);
                 carList.appendChild(divmodel);
 
 
-
+            //Tworzenie kontenerów przechowujących ceny
                 const divprice = document.createElement('div');
-                divprice.className = 'divprice';
-                divprice.textContent = `${car.price}`;
+                divprice.classList.add('divprice', 'editable');
+                divprice.onclick = function(){
+                    enableEditing(this);
+                };
+
+                const spanPrice = document.createElement('span');
+                spanPrice.classList.add('displayText', 'priceS');
+                spanPrice.textContent =`${car.price}`;
+                divprice.appendChild(spanPrice);
+
+                const inputPrice = document.createElement('input');
+                inputPrice.className = 'editInput';
+                inputPrice.type = 'text';
+                inputPrice.onblur = function (){
+                    disableEditing(this.parentNode, car.id);
+                };
+                divprice.appendChild(inputPrice);
                 carList.appendChild(divprice);
 
+
+            //Tworzenie kontenerów przechowujących zdj
                 const divphoto = document.createElement('div');
-                divphoto.className = 'divphoto';
-                divphoto.textContent = `${car.photo}`;
+                divphoto.classList.add('divphoto', 'editable');
+                divphoto.onclick = function (){
+                    enableEditing(this);
+                }
+
+                const spanPhoto = document.createElement('span');
+                spanPhoto.classList.add('displayText', 'photoS');
+                spanPhoto.textContent = `${car.photo}`;
+                divphoto.appendChild(spanPhoto);
+
+                const inputPhoto = document.createElement('input');
+                inputPhoto.className = 'editInput';
+                inputPhoto.type = 'text';
+                inputPhoto.onblur = function(){
+                    disableEditing(this.parentNode, car.id);
+                };
+                divphoto.appendChild(inputPhoto);
                 carList.appendChild(divphoto);
+
+
 
                 const divclear = document.createElement('div');
                 divclear.className = 'divclear';
                 carList.appendChild(divclear);
 
+
+            //Tworzenie przycisku kasującego wybrany wiersz
                 const removeButton = document.createElement('button');
                 removeButton.className = 'removeButton'
                 removeButton.textContent = 'X';
