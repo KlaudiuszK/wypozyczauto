@@ -21,4 +21,7 @@ public class Car {
         private String model;
         private Integer price;
         private String photo;
+
+      @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+        private List <Rental> rentals;
 }

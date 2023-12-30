@@ -3,14 +3,12 @@ package pl.wypozyczauto.wypozyczauto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auta")
@@ -41,6 +39,10 @@ public class WypozyczautoController {
     public List<Car> getAllCars() {
         return carService.getAllCars();
     }
+
+    @MessageMapping("/getCar")
+    @SendTo("/topics/cars")
+    public Optional<Car> getCar(Long carId) { return carService.getCar(carId); }
 
 
     @MessageMapping("/editCar")

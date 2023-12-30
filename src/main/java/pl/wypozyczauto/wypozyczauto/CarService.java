@@ -14,6 +14,9 @@ public class CarService {
     public List<Car> getAllCars() {
         return carRepository.findAll();
     }
+    
+    public Optional<Car> getCar(Long carId) {  System.out.println("id: " + carId); return carRepository.findById(carId);}
+
 
     public Car addCar(Car car) {
         return carRepository.save(car);

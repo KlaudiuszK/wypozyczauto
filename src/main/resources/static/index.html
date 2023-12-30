@@ -91,7 +91,6 @@
             const price = document.getElementById('price').value;
             const photo = document.getElementById('photo').value;
 
-
             const car = { brand, model, price, photo };
             stompClient.send('/app/addCar', {}, JSON.stringify(car));
         }
@@ -104,6 +103,7 @@
         function editCar(Cars){
             stompClient.send("/app/editCar", {}, JSON.stringify(Cars) );
         }
+
 
 
         // Funkcja do aktywowania edycji
@@ -119,8 +119,6 @@
 
             editInput.value = displayText.textContent;
             console.log(editInput.value);
-
-
             // Ustaw focus na polu edycji
             editInput.focus();
 
@@ -139,19 +137,11 @@
             // Pokaż tekst, ukryj pole do edycji
             displayText.style.display = 'inline-block';
             editInput.style.display = 'none';
-            console.log("ODebrane id " + carId);
 
             const id = carId;
-
-            console.log("sax   " +displayText.classList);
-          //  const modelS = displayText.classList;
-            //const brandS = displayText.classList;
-            console.log("Poprzednie: "+ poprzednie +" DSIPLAY: " + displayText.textContent + "divmodel " + displayText.classList);
-
             if(poprzednie !== displayText.textContent) {
 
-                if(displayText.classList.contains('modelS'))
-                {
+                if(displayText.classList.contains('modelS')) {
                     const model = editInput.value;
                     const cars = {id, model}
                     editCar(cars);
