@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.sql.Date;
 
@@ -18,8 +20,10 @@ public class Rental {
     private Long id;
     private Date rentalDate;
     private Date returnDate;
+    private Long tempCarId;
 
     @ManyToOne
     @JoinColumn(name = "car_id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private Car car;
 }

@@ -29,7 +29,6 @@
             <button type="button" onclick="sendReservation()">Rezerwuj</button>
         </form>
         <div id = "chosenElement">
-
         </div>
     </div>
 </div>
@@ -52,7 +51,7 @@
             getData();
         });
 
-        function changeContent(page, carDiv) {
+        function changeContent(page, carDiv, carId) {
             // Ukryj wszystkie strony
             var pages = document.getElementsByClassName('page');
             for (var i = 0; i < pages.length; i++) {
@@ -72,6 +71,8 @@
                     chosenElement.appendChild(carDiv.firstChild);
             }
             else     console.error("carDiv has no children.");
+
+            chosenElement.setAttribute('data-carid', carId);
         }
 
 
@@ -90,7 +91,7 @@
             const cenaZaOkres = document.getElementById('cenaRazem');
 
             const cena = wybranyElement.querySelector('.price b').textContent;
-            console.log("rodizc ceny " + cena);
+            console.log("rodzic ceny " + cena);
 
             cenaZaOkres.value = dni * cena ;
 
@@ -112,14 +113,27 @@
             const rentalDate = document.getElementById('dataWypozyczenia').value;
             const returnDate = document.getElementById('dataZwrotu').value;
 
+            const chosenElement = document.getElementById('chosenElement');
+            const carId = chosenElement.getAttribute('data-carid');
+
+            const carName = chosenElement.querySelector('.itemName').textContent;
+            const brand = carName.split(' ')[0];
+            const model = carName.split(' ').slice(1).join(' ');
+            obliczDate();
+            const cenaZaOkres = document.getElementById('cenaRazem');
+            const price = cenaZaOkres.value;
+            const photo = chosenElement.querySelector('img').src;
+
             const reservation = { rentalDate, returnDate };
-            console.log("reservation przekazywany: " +reservation);
-            stompClient.send('/app/addCar', {}, JSON.stringify(reservation));
+            const dataToSend = { car: { brand, model, price, photo }, reservation, carId };
+            console.log("Przekazane carId: " +carId);
+            console.log("Przekazany samochód: " + dataToSend);
+            stompClient.send('/app/reserveCar', {}, JSON.stringify(dataToSend));
         }
 
-        function showParent(element) {
+        function showParent(element, carId) {
             var parent = element.parentNode;
-            changeContent('reservationcontainer', parent);
+            changeContent('reservationcontainer', parent, carId);
         }
 
 
@@ -170,7 +184,7 @@
                 carReservation.href = "#";
                 carReservation.textContent = 'Rezerwuj';
                 carReservation.onclick= function (){
-                    showParent(this);
+                    showParent(this, car.id);
                     return false;
                 }
                 carDiv.appendChild(carReservation);
