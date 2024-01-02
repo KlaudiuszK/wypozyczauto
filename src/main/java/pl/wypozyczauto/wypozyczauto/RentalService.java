@@ -54,10 +54,25 @@ public class RentalService {
         }
     }
 
-
     @Transactional
     public void removeRental(Long rentalId) {
-        rentalRepository.deleteById(rentalId);
+        try {
+            Optional<Rental> optionalRental = rentalRepository.findById(rentalId);
+
+            if (optionalRental.isPresent()) {
+                Rental rentalToRemove = optionalRental.get();
+                Car car = rentalToRemove.getCar();
+
+                if (car != null) {
+                    car.getRentals().remove(rentalToRemove);
+                    rentalRepository.deleteById(rentalId);
+                }
+            }
+
+            System.out.println("Test2");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void editRental(Rental updatedRental) {
@@ -72,6 +87,10 @@ public class RentalService {
 
             if (updatedRental.getReturnDate() != null) {
                 existingRental.setReturnDate(updatedRental.getReturnDate());
+            }
+
+            if (updatedRental.getTempCarId() != null) {
+                existingRental.setTempCarId(updatedRental.getTempCarId());
             }
 
             rentalRepository.save(existingRental);

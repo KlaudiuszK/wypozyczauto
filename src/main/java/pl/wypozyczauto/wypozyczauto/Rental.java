@@ -1,11 +1,13 @@
 package pl.wypozyczauto.wypozyczauto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Date;
 
@@ -24,6 +26,12 @@ public class Rental {
 
     @ManyToOne
     @JoinColumn(name = "car_id")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIgnore
     private Car car;
+
+    @Override
+    public String toString() {
+        return "Rental{id=" + id + ", rentalDate=" + rentalDate + ", returnDate=" + returnDate + ", tempCarId=" + tempCarId + "}";
+    }
 }

@@ -197,10 +197,6 @@
                     editCar(cars);
                 }
             }
-
-
-
-
         }
 
 
@@ -333,6 +329,65 @@
             stompClient.send("/app/removeRental", {}, JSON.stringify(  rentalId ));
         }
 
+        function editRental(Rentals){
+            stompClient.send("/app/editRental", {}, JSON.stringify(Rentals) );
+        }
+
+
+
+        // Funkcja do aktywowania edycji
+        function enableRentEditing(rentalList) {
+            // Ukryj tekst
+            console.log('Funkcja enableRentEditing została wywołana.');
+            const displayText = rentalList.querySelector('.displayText');
+            const editInput = rentalList.querySelector('.editInput');
+
+            displayText.style.display = 'none';
+            editInput.style.display = 'inline-block';
+            // Ustaw tekst pola edycji na aktualny tekst
+
+            editInput.value = displayText.textContent;
+            console.log(editInput.value);
+            // Ustaw focus na polu edycji
+            editInput.focus();
+
+        }
+
+        function disableRentEditing(rentalList, rentalId) {
+            console.log('Funkcja disableRentEditing została wywołana.');
+            // Pobierz tekst i pole do edycji
+            const displayText = rentalList.querySelector('.displayText');
+            const editInput = rentalList.querySelector('.editInput');
+
+            // Zaktualizuj tekst na podstawie wartości z pola edycji
+            const poprzednie = displayText.textContent;
+            displayText.textContent = editInput.value;
+
+            // Pokaż tekst, ukryj pole do edycji
+            displayText.style.display = 'inline-block';
+            editInput.style.display = 'none';
+
+            const id = rentalId;
+            if(poprzednie !== displayText.textContent) {
+
+                if(displayText.classList.contains('rentalDateS')) {
+                    const rentalDate = editInput.value;
+                    const rentals = {id, rentalDate}
+                    editRental(rentals);
+                }
+                else if(displayText.classList.contains('returnDateS')){
+                    const returnDate = editInput.value;
+                    const rentals = { id, returnDate }
+                    editRental(rentals);
+                }
+                else if(displayText.classList.contains('tempcaridS')){
+                    const tempCarId = editInput.value;
+                    const rentals = { id, tempCarId }
+                    editRental(rentals);
+                }
+            }
+        }
+
 
         function displayRentals(rentals) {
             const rentalList = document.getElementById('rentalList');
@@ -347,20 +402,74 @@
 
             //Tworzenie kontenerów przechowujących datę wypożyczenia
                 const divrentaldate = document.createElement('div');
-                divrentaldate.classList.add('divrentaldate');
-                divrentaldate.textContent = `${rental.rentalDate}`;
+                divrentaldate.classList.add('divrentaldate', 'editable');
+                //divrentaldate.textContent = `${rental.rentalDate}`;
+                //rentalList.appendChild(divrentaldate);
+
+                divrentaldate.onclick = function(){
+                    enableRentEditing(this);
+                };
+
+                const spanRentalDate = document.createElement('span');
+                spanRentalDate.classList.add('displayText', 'rentalDateS');
+                spanRentalDate.textContent =`${rental.rentalDate}`;
+                divrentaldate.appendChild(spanRentalDate);
+
+                const inputRentalDate = document.createElement('input');
+                inputRentalDate.className = 'editInput';
+                inputRentalDate.type = 'text';
+                inputRentalDate.onblur = function (){
+                    disableRentEditing(this.parentNode, rental.id);
+                };
+                divrentaldate.appendChild(inputRentalDate);
                 rentalList.appendChild(divrentaldate);
 
             //Tworzenie kontenerów przechowujących datę zwrotu
                 const divreturndate = document.createElement('div');
-                divreturndate.classList.add('divreturndate');
-                divreturndate.textContent = `${rental.returnDate}`;
+                divreturndate.classList.add('divreturndate', 'editable');
+                //divreturndate.textContent = `${rental.returnDate}`;
+                //rentalList.appendChild(divreturndate);
+
+                divreturndate.onclick = function(){
+                    enableRentEditing(this);
+                };
+
+                const spanReturnDate = document.createElement('span');
+                spanReturnDate.classList.add('displayText', 'returnDateS');
+                spanReturnDate.textContent =`${rental.returnDate}`;
+                divreturndate.appendChild(spanReturnDate);
+
+                const inputReturnDate = document.createElement('input');
+                inputReturnDate.className = 'editInput';
+                inputReturnDate.type = 'text';
+                inputReturnDate.onblur = function (){
+                    disableRentEditing(this.parentNode, rental.id);
+                };
+                divreturndate.appendChild(inputReturnDate);
                 rentalList.appendChild(divreturndate);
 
             //Tworzenie kontenerów przechowujących id samochodu
                 const divtempcarid = document.createElement('div');
-                divtempcarid.classList.add('divtempcarid');
-                divtempcarid.textContent = `${rental.tempCarId}`;
+                divtempcarid.classList.add('divtempcarid','editable');
+                //divtempcarid.textContent = `${rental.tempCarId}`;
+                //rentalList.appendChild(divtempcarid);
+
+                divtempcarid.onclick = function(){
+                    enableRentEditing(this);
+                };
+
+                const spanTempCarId = document.createElement('span');
+                spanTempCarId.classList.add('displayText', 'tempcaridS');
+                spanTempCarId.textContent =`${rental.tempCarId}`;
+                divtempcarid.appendChild(spanTempCarId);
+
+                const inputTempCarId = document.createElement('input');
+                inputTempCarId.className = 'editInput';
+                inputTempCarId.type = 'text';
+                inputTempCarId.onblur = function (){
+                    disableRentEditing(this.parentNode, rental.id);
+                };
+                divtempcarid.appendChild(inputTempCarId);
                 rentalList.appendChild(divtempcarid);
 
                 const divclear = document.createElement('div');
@@ -381,8 +490,6 @@
                 rentalList.appendChild(removeButton);
 
                 rentalList.appendChild(divclear);
-
-
             });
         }
     </script>
