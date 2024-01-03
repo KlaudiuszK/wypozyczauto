@@ -68,8 +68,6 @@ public class RentalService {
                     rentalRepository.deleteById(rentalId);
                 }
             }
-
-            System.out.println("Test2");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -35,6 +35,7 @@
 
 
 
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client"></script>
@@ -43,6 +44,7 @@
 
         const socket = new SockJS('/websocket-example');
         const stompClient = Stomp.over(socket);
+        var chosenElement;
 
         stompClient.connect({}, function (frame) {
             stompClient.subscribe('/topic/cars', function (message) {
@@ -128,7 +130,18 @@
             const dataToSend = { car: { brand, model, price, photo }, reservation, carId };
             console.log("Przekazane carId: " +carId);
             console.log("Przekazany samochód: " + dataToSend);
+
             stompClient.send('/app/reserveCar', {}, JSON.stringify(dataToSend));
+
+            stompClient.subscribe('/topic/cars', function (message) {
+                const confirmationMessage = `Pomyślnie zarezerwowałeś samochód ${carName} od ${rentalDate} do ${returnDate}`;
+                alert(confirmationMessage);
+
+                // Przenieś na stronę główną po kliknięciu OK w alercie
+                window.location.href = "home.html";
+            }, function (error) {
+                console.error("Błąd subskrypcji", error);
+            });
         }
 
         function showParent(element, carId) {
@@ -138,12 +151,21 @@
 
 
         function handleCars(cars) {
+            console.log("HandleCars: " + cars);
+
             // Znajdujemy kontener o klasie 'content' i czyścimy go
             const content = $('#content');
             content.empty();
 
-            // Iterujemy po każdym samochodzie w tablicy 'cars'
-            cars.forEach(function (car) {
+            if (Array.isArray(cars)) {
+                cars.forEach(function (car) {
+                    processCar(car);
+                });
+            } else {
+                processCar(cars);
+            }
+
+            function processCar(car) {
 
                 // Tworzymy nowy div o klasie 'item' dla każdego samochodu
                 const carDiv = document.createElement('div');
@@ -192,7 +214,7 @@
 
                 // Dodajemy div do kontenera
                 content.append(carDiv);
-            });
+            }
         }
 
 
