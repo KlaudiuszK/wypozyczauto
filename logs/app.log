@@ -1,0 +1,159 @@
+2024-01-17T19:43:43.635+01:00  INFO 9632 --- [main] p.w.wypozyczauto.CarServiceTest          : Starting CarServiceTest using Java 21.0.1 with PID 9632 (started by kurta in C:\Git_Repo\wypozyczauto)
+2024-01-17T19:43:43.637+01:00  INFO 9632 --- [main] p.w.wypozyczauto.CarServiceTest          : No active profile set, falling back to 1 default profile: "default"
+2024-01-17T19:43:44.609+01:00  INFO 9632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-17T19:43:44.705+01:00  INFO 9632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 2 JPA repository interfaces.
+2024-01-17T19:43:46.165+01:00  INFO 9632 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-17T19:43:46.325+01:00  INFO 9632 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2024-01-17T19:43:46.394+01:00  INFO 9632 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-01-17T19:43:46.673+01:00  INFO 9632 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-17T19:43:46.716+01:00  INFO 9632 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-17T19:43:47.371+01:00  INFO 9632 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7d3bcd3
+2024-01-17T19:43:47.374+01:00  INFO 9632 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-17T19:43:47.472+01:00  WARN 9632 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-01-17T19:43:48.509+01:00  INFO 9632 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-17T19:43:48.630+01:00  INFO 9632 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T19:43:49.235+01:00  WARN 9632 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-17T19:43:49.454+01:00  INFO 9632 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-01-17T19:43:49.709+01:00  WARN 9632 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-17T19:43:49.839+01:00  INFO 9632 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-01-17T19:43:49.841+01:00  INFO 9632 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@797c67c]]
+2024-01-17T19:43:49.842+01:00  INFO 9632 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-01-17T19:43:49.849+01:00  INFO 9632 --- [main] p.w.wypozyczauto.CarServiceTest          : Started CarServiceTest in 6.634 seconds (process running for 8.394)
+2024-01-17T19:43:50.317+01:00  INFO 9632 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2024-01-17T19:43:50.317+01:00  INFO 9632 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@797c67c]]
+2024-01-17T19:43:50.318+01:00  INFO 9632 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2024-01-17T19:43:50.321+01:00  INFO 9632 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T19:43:50.324+01:00  INFO 9632 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-17T19:43:50.350+01:00  INFO 9632 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-17T19:47:37.826+01:00  INFO 15808 --- [main] p.w.wypozyczauto.CarServiceTest          : Starting CarServiceTest using Java 21.0.1 with PID 15808 (started by kurta in C:\Git_Repo\wypozyczauto)
+2024-01-17T19:47:37.828+01:00  INFO 15808 --- [main] p.w.wypozyczauto.CarServiceTest          : No active profile set, falling back to 1 default profile: "default"
+2024-01-17T19:47:38.834+01:00  INFO 15808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-17T19:47:38.923+01:00  INFO 15808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 2 JPA repository interfaces.
+2024-01-17T19:47:40.226+01:00  INFO 15808 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-17T19:47:40.363+01:00  INFO 15808 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2024-01-17T19:47:40.459+01:00  INFO 15808 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-01-17T19:47:40.696+01:00  INFO 15808 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-17T19:47:40.752+01:00  INFO 15808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-17T19:47:41.304+01:00  INFO 15808 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ab50d1c
+2024-01-17T19:47:41.308+01:00  INFO 15808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-17T19:47:41.407+01:00  WARN 15808 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-01-17T19:47:42.478+01:00  INFO 15808 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-17T19:47:42.590+01:00  INFO 15808 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T19:47:43.416+01:00  WARN 15808 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-17T19:47:43.669+01:00  INFO 15808 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-01-17T19:47:43.991+01:00  WARN 15808 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-17T19:47:44.133+01:00  INFO 15808 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-01-17T19:47:44.136+01:00  INFO 15808 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2b68c59b]]
+2024-01-17T19:47:44.138+01:00  INFO 15808 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-01-17T19:47:44.147+01:00  INFO 15808 --- [main] p.w.wypozyczauto.CarServiceTest          : Started CarServiceTest in 6.731 seconds (process running for 8.295)
+2024-01-17T19:47:44.641+01:00  INFO 15808 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2024-01-17T19:47:44.642+01:00  INFO 15808 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2b68c59b]]
+2024-01-17T19:47:44.642+01:00  INFO 15808 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2024-01-17T19:47:44.645+01:00  INFO 15808 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T19:47:44.652+01:00  INFO 15808 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-17T19:47:44.692+01:00  INFO 15808 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-17T19:51:39.534+01:00  INFO 3464 --- [main] p.w.wypozyczauto.CarServiceTest          : Starting CarServiceTest using Java 21.0.1 with PID 3464 (started by kurta in C:\Git_Repo\wypozyczauto)
+2024-01-17T19:51:39.538+01:00  INFO 3464 --- [main] p.w.wypozyczauto.CarServiceTest          : No active profile set, falling back to 1 default profile: "default"
+2024-01-17T19:51:40.510+01:00  INFO 3464 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-17T19:51:40.594+01:00  INFO 3464 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 2 JPA repository interfaces.
+2024-01-17T19:51:41.907+01:00  INFO 3464 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-17T19:51:42.011+01:00  INFO 3464 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2024-01-17T19:51:42.066+01:00  INFO 3464 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-01-17T19:51:42.247+01:00  INFO 3464 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-17T19:51:42.278+01:00  INFO 3464 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-17T19:51:42.734+01:00  INFO 3464 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@14d81f2c
+2024-01-17T19:51:42.737+01:00  INFO 3464 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-17T19:51:42.839+01:00  WARN 3464 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-01-17T19:51:43.876+01:00  INFO 3464 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-17T19:51:43.992+01:00  INFO 3464 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T19:51:44.588+01:00  WARN 3464 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-17T19:51:44.788+01:00  INFO 3464 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-01-17T19:51:45.032+01:00  WARN 3464 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-17T19:51:45.166+01:00  INFO 3464 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-01-17T19:51:45.168+01:00  INFO 3464 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@18f1a81a]]
+2024-01-17T19:51:45.169+01:00  INFO 3464 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-01-17T19:51:45.177+01:00  INFO 3464 --- [main] p.w.wypozyczauto.CarServiceTest          : Started CarServiceTest in 6.091 seconds (process running for 7.535)
+2024-01-17T19:51:45.613+01:00  INFO 3464 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2024-01-17T19:51:45.614+01:00  INFO 3464 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@18f1a81a]]
+2024-01-17T19:51:45.614+01:00  INFO 3464 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2024-01-17T19:51:45.616+01:00  INFO 3464 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T19:51:45.621+01:00  INFO 3464 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-17T19:51:45.650+01:00  INFO 3464 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-17T19:51:57.677+01:00  INFO 14876 --- [main] p.w.w.WypozyczautoApplication            : Starting WypozyczautoApplication using Java 21.0.1 with PID 14876 (C:\Git_Repo\wypozyczauto\target\classes started by kurta in C:\Git_Repo\wypozyczauto)
+2024-01-17T19:51:57.680+01:00  INFO 14876 --- [main] p.w.w.WypozyczautoApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-01-17T19:51:58.361+01:00  INFO 14876 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-17T19:51:58.421+01:00  INFO 14876 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 2 JPA repository interfaces.
+2024-01-17T19:51:58.934+01:00  INFO 14876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-01-17T19:51:58.944+01:00  INFO 14876 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-17T19:51:58.944+01:00  INFO 14876 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2024-01-17T19:51:59.005+01:00  INFO 14876 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-17T19:51:59.006+01:00  INFO 14876 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1268 ms
+2024-01-17T19:51:59.148+01:00  INFO 14876 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-17T19:51:59.200+01:00  INFO 14876 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2024-01-17T19:51:59.231+01:00  INFO 14876 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-01-17T19:51:59.451+01:00  INFO 14876 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-17T19:51:59.474+01:00  INFO 14876 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-17T19:51:59.818+01:00  INFO 14876 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@49190ed6
+2024-01-17T19:51:59.821+01:00  INFO 14876 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-17T19:51:59.885+01:00  WARN 14876 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-01-17T19:52:00.830+01:00  INFO 14876 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-17T19:52:00.915+01:00  INFO 14876 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T19:52:01.324+01:00  WARN 14876 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-17T19:52:01.393+01:00  INFO 14876 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-01-17T19:52:01.544+01:00  WARN 14876 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-17T19:52:01.651+01:00  INFO 14876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-01-17T19:52:01.653+01:00  INFO 14876 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-01-17T19:52:01.655+01:00  INFO 14876 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@108fd5d5]]
+2024-01-17T19:52:01.655+01:00  INFO 14876 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-01-17T19:52:01.661+01:00  INFO 14876 --- [main] p.w.w.WypozyczautoApplication            : Started WypozyczautoApplication in 4.52 seconds (process running for 4.888)
+2024-01-17T19:52:09.664+01:00  INFO 14876 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-17T19:52:09.666+01:00  INFO 14876 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-17T19:52:09.667+01:00  INFO 14876 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-01-17T19:53:01.654+01:00  INFO 14876 --- [MessageBroker-5] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 16, active threads = 0, queued tasks = 0, completed tasks = 30], outboundChannel[pool size = 7, active threads = 0, queued tasks = 0, completed tasks = 7], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 12]
+2024-01-17T20:01:48.104+01:00  WARN 14876 --- [SpringApplicationShutdownHook] w.s.h.ExceptionWebSocketHandlerDecorator : Unhandled exception after connection closed for ExceptionWebSocketHandlerDecorator [delegate=LoggingWebSocketHandlerDecorator [delegate=SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]]]
+
+org.springframework.messaging.MessageDeliveryException: Failed to send message to ExecutorSubscribableChannel[clientInboundChannel]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:149) ~[spring-messaging-6.1.1.jar:6.1.1]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:125) ~[spring-messaging-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:685) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.close(AbstractSockJsSession.java:200) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302) ~[spring-websocket-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:344) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:483) ~[spring-context-6.1.1.jar:6.1.1]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:313) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:214) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1078) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1037) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145) ~[spring-boot-3.2.0.jar:3.2.0]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114) ~[spring-boot-3.2.0.jar:3.2.0]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.springframework.core.task.TaskRejectedException: ExecutorService in shutdown state did not accept task: org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@5d64e744
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:365) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.messaging.support.ExecutorSubscribableChannel.sendInternal(ExecutorSubscribableChannel.java:103) ~[spring-messaging-6.1.1.jar:6.1.1]
+	at org.springframework.messaging.support.AbstractMessageChannel.send(AbstractMessageChannel.java:139) ~[spring-messaging-6.1.1.jar:6.1.1]
+	... 24 common frames omitted
+Caused by: java.util.concurrent.RejectedExecutionException: Task org.springframework.messaging.support.ExecutorSubscribableChannel$SendTask@5d64e744 rejected from org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1@4a0ee0ba[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 156]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1376) ~[na:na]
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor$1.execute(ThreadPoolTaskExecutor.java:269) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor.execute(ThreadPoolTaskExecutor.java:362) ~[spring-context-6.1.1.jar:6.1.1]
+	... 26 common frames omitted
+
+2024-01-17T20:01:48.112+01:00  INFO 14876 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2024-01-17T20:01:48.178+01:00  INFO 14876 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@108fd5d5]]
+2024-01-17T20:01:48.179+01:00  INFO 14876 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2024-01-17T20:01:48.191+01:00  INFO 14876 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T20:01:48.195+01:00  INFO 14876 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-17T20:01:48.227+01:00  INFO 14876 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

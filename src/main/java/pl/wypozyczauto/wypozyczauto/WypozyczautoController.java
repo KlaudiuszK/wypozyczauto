@@ -54,6 +54,8 @@ public class WypozyczautoController {
             System.out.println("getRentalDate: " + reservationRequest.getReservation().getRentalDate());
             System.out.println("getRentalDate2: " + reservationRequest.getReservation().getRentalDate());
             Rental rental = new Rental();
+            rental.setFirstName(reservationRequest.getReservation().getFirstName());
+            rental.setSurname(reservationRequest.getReservation().getSurname());
             rental.setRentalDate(reservationRequest.getReservation().getRentalDate());
             rental.setReturnDate(reservationRequest.getReservation().getReturnDate());
             rental.setTempCarId(carId);

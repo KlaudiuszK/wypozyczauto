@@ -20,6 +20,8 @@ public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String firstName;
+    private String surname;
     private Date rentalDate;
     private Date returnDate;
     private Long tempCarId;
@@ -32,6 +34,6 @@ public class Rental {
 
     @Override
     public String toString() {
-        return "Rental{id=" + id + ", rentalDate=" + rentalDate + ", returnDate=" + returnDate + ", tempCarId=" + tempCarId + "}";
+        return "Rental{id=" + id + ", firstName=" + firstName + ", surname=" + surname + ", rentalDate=" + rentalDate + ", returnDate=" + returnDate + ", tempCarId=" + tempCarId + "}";
     }
 }

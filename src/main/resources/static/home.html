@@ -17,6 +17,10 @@
     </div>
     <div id="reservationcontainer" class="page">
         <form id="rentalForm">
+            <label for="nazwisko">Imię: </label>
+            <input type="text" id="nazwisko" name="nazwisko" >
+            <label for="imie">Imię: </label>
+            <input type="text" id="imie" name="imie" >
             <label for="dataWypozyczenia">Data Wypożyczenia: </label>
             <input type="date" id="dataWypozyczenia" name="dataWypozyczenia" >
             <label for="dataZwrotu">Data Zwrotu</label>
@@ -112,6 +116,8 @@
 
 
         function sendReservation(){
+            const firstName = document.getElementById('imie').value;
+            const surname = document.getElementById('nazwisko').value;
             const rentalDate = document.getElementById('dataWypozyczenia').value;
             const returnDate = document.getElementById('dataZwrotu').value;
 
@@ -126,7 +132,7 @@
             const price = cenaZaOkres.value;
             const photo = chosenElement.querySelector('img').src;
 
-            const reservation = { rentalDate, returnDate };
+            const reservation = { firstName, surname, rentalDate, returnDate };
             const dataToSend = { car: { brand, model, price, photo }, reservation, carId };
             console.log("Przekazane carId: " +carId);
             console.log("Przekazany samochód: " + dataToSend);

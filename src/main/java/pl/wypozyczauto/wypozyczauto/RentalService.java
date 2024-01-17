@@ -79,6 +79,15 @@ public class RentalService {
         if (optionalRental.isPresent()) {
             Rental existingRental = optionalRental.get();
             // Sprawdź, czy przesłano nową wartość i aktualizuj odpowiednie pole
+
+            if (updatedRental.getFirstName() != null) {
+                existingRental.setFirstName(updatedRental.getFirstName());
+            }
+
+            if (updatedRental.getSurname() != null) {
+                existingRental.setSurname(updatedRental.getSurname());
+            }
+
             if (updatedRental.getRentalDate() != null) {
                 existingRental.setRentalDate(updatedRental.getRentalDate());
             }

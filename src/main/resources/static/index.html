@@ -47,11 +47,17 @@
             </div>
             <div id="wypozyczeniacontainer" class="page">
                 <form id="rentalForm">
+                    <label for="firstName">Imię:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+
+                    <label for="surname">Nazwisko:</label>
+                    <input type="text" id="surname" name="surname" required>
+
                     <label for="rentalDate">Data wypożyczenia:</label>
-                    <input type="text" id="rentalDate" name="rentalDate" required>
+                    <input type="date" id="rentalDate" name="rentalDate" required>
 
                     <label for="returnDate">Data zwrotu:</label>
-                    <input type="text" id="returnDate" name="returnDate" required>
+                    <input type="date" id="returnDate" name="returnDate" required>
 
                     <label for="tempcarid">ID samochodu:</label>
                     <input type="text" id="tempcarid" name="tempcarid" required>
@@ -121,12 +127,14 @@
         }
 
         function sendReservation() {
+            const firstName = document.getElementById('firstName').value;
+            const surname = document.getElementById('surname').value;
             const rentalDate = document.getElementById('rentalDate').value;
             const returnDate = document.getElementById('returnDate').value;
             const tempCarId = document.getElementById('tempcarid').value;
             console.log("w index.html Dodawanie carId: " + tempCarId);
 
-            const rental = { rentalDate, returnDate, tempCarId };
+            const rental = { firstName, surname, rentalDate, returnDate, tempCarId };
             stompClient.send('/app/addRentalAdmin', {}, JSON.stringify(rental));
         }
 
@@ -370,7 +378,17 @@
             const id = rentalId;
             if(poprzednie !== displayText.textContent) {
 
-                if(displayText.classList.contains('rentalDateS')) {
+                if(displayText.classList.contains('firstNameS')) {
+                    const firstName = editInput.value;
+                    const rentals = {id, firstName}
+                    editRental(rentals);
+                }
+                else if(displayText.classList.contains('surnameS')) {
+                    const surname = editInput.value;
+                    const rentals = {id, surname}
+                    editRental(rentals);
+                }
+                else if(displayText.classList.contains('rentalDateS')) {
                     const rentalDate = editInput.value;
                     const rentals = {id, rentalDate}
                     editRental(rentals);
@@ -391,7 +409,7 @@
 
         function displayRentals(rentals) {
             const rentalList = document.getElementById('rentalList');
-            rentalList.innerHTML = '<div class="divid header">ID</div><div class="divrentaldate header">Data wypożyczenia</div><div class="divreturndate header">Data zwrotu</div><div class="divtempcarid header">ID samochodu</div><div class="divclear"></div>';
+            rentalList.innerHTML = '<div class="divid header">ID</div><div class="divfirstname header">Imię</div><div class="divsurname header">Nazwisko</div><div class="divrentaldate header">Data wypożyczenia</div><div class="divreturndate header">Data zwrotu</div><div class="divtempcarid header">ID samochodu</div><div class="divclear"></div>';
 
             rentals.forEach(function (rental) {
 
@@ -399,6 +417,53 @@
                 divid.className = 'divid';
                 divid.textContent = `${rental.id}`;
                 rentalList.appendChild(divid);
+
+
+                //Tworzenie kontenerów przechowujących imię
+                const divfirstname = document.createElement('div');
+                divfirstname.classList.add('divfirstname', 'editable');
+
+                divfirstname.onclick = function(){
+                    enableRentEditing(this);
+                };
+
+                const spanFirstName = document.createElement('span');
+                spanFirstName.classList.add('displayText', 'firstNameS');
+                spanFirstName.textContent =`${rental.firstName}`;
+                divfirstname.appendChild(spanFirstName);
+
+                const inputFirstName = document.createElement('input');
+                inputFirstName.className = 'editInput';
+                inputFirstName.type = 'text';
+                inputFirstName.onblur = function (){
+                    disableRentEditing(this.parentNode, rental.id);
+                };
+                divfirstname.appendChild(inputFirstName);
+                rentalList.appendChild(divfirstname);
+
+
+                //Tworzenie kontenerów przechowujących nazwisko
+                const divsurname = document.createElement('div');
+                divsurname.classList.add('divsurname', 'editable');
+
+                divsurname.onclick = function(){
+                    enableRentEditing(this);
+                };
+
+                const spanSurname = document.createElement('span');
+                spanSurname.classList.add('displayText', 'surnameS');
+                spanSurname.textContent =`${rental.surname}`;
+                divsurname.appendChild(spanSurname);
+
+                const inputSurname = document.createElement('input');
+                inputSurname.className = 'editInput';
+                inputSurname.type = 'text';
+                inputSurname.onblur = function (){
+                    disableRentEditing(this.parentNode, rental.id);
+                };
+                divsurname.appendChild(inputSurname);
+                rentalList.appendChild(divsurname);
+
 
             //Tworzenie kontenerów przechowujących datę wypożyczenia
                 const divrentaldate = document.createElement('div');
